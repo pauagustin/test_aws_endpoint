@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  fastapi:
+    build: 
+      dockerfile: Dockerfile
+    # restart: unless-stopped
+    ports: 
+      - 8008:8008
+    environment:
+      APP_ENV: "prod"
+      APP_DEBUG: "False"
+      # APP_PORT: 8008
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4096M
+        reservations:
+          cpus: '1.0'
+          memory: 2048M
+    container_name: fastapi-docker
